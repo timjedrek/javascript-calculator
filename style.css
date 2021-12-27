@@ -1,0 +1,107 @@
+color-reference {
+    color: #97BFB4;
+    color: #F5EEDC;
+    color: #DD4A48;
+    color: #4F091D;
+}
+
+body {
+    background-color: #F5EEDC;
+    font-family:Arial, Helvetica, sans-serif;
+    padding: 0px;
+    margin:0px;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.header {
+    width: 100%;
+    background-color: #97BFB4;
+    padding: 0.5rem;
+    margin:0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.header-text {
+    background-color: #F5EEDC;
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+
+h1 {
+    padding: 0px;
+    margin:0px;
+    color: #4F091D;
+    font-size: 3rem;
+}
+
+.calculator {
+    background-color:#97BFB4;
+    border-radius: 10px;
+    margin: 1em;
+    width: 35vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.screen-holder {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.screen {
+    width: 30vw;
+    height: 20vh;
+    background-color: #F5EEDC;
+    margin: 1em;
+    border-radius: 10px;
+}
+
+.clear-and-delete {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.clear {
+    background-color:#4F091D;
+    color:#F5EEDC;
+}
+
+.delete {
+    background-color:#DD4A48;
+    color:#F5EEDC;
+}
+
+.clear, .delete {
+    width: 14.5vw;
+    height: 6vw;
+    margin: 0.2em;
+    border-radius: 10px;
+    font-size: 2rem;
+}
+
+.row-1 button, .row-2 button, .row-3 button, .row-4 button {
+    background-color: #F5EEDC;
+    color: #4F091D;
+    width: 6vw;
+    height: 6vw;
+    margin: 0.2em;
+    border-radius: 10px;
+    font-size: 3rem;
+}
+
+.row-1, .row-2, .row-3, .row-4 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.5rem;
+}
