@@ -1,7 +1,7 @@
 let input = "";
 let output = "";
-let number1 = 0;
-let number2 = 0;
+let number1 = "";
+let number2 = "";
 let operator = ""
 
 //declare variables for each DOM element
@@ -23,18 +23,18 @@ const button9 = document.getElementById("9button");
 const button0 = document.getElementById("0button");
 
 const plus = document.getElementById("plusButton");
-const hypen = document.getElementById("subtractButton");
+const hyphen = document.getElementById("subtractButton");
 const X = document.getElementById("multiplyButton");
 const forwardSlash = document.getElementById("divideButton");
 
 const point = document.getElementById("decimal");
 const ni = document.getElementById("equals");
 /*
-Ni is the Japanese pronounciation of the following characters 
-    に
-    二
-    ニ
-Which all look pretty similar in the sense that they all have two horizontal lines which just so happens is what an equals sign looks like.. so yea.    
+Ni is the Japanese pronounciation of the following characters:
+    に 
+    二 
+    ニ 
+Which all look pretty similar in the sense that they all have two horizontal lines with on on top of the other which just so happens is what an equals sign looks like.. so yea.    
 */
 
 
@@ -54,43 +54,48 @@ buttonClear.addEventListener('click', () => {clearInput();});
 buttonDelete.addEventListener('click', () => {deleteInput();});
 
 plus.addEventListener('click', () => {plusButtonClick();});
+hyphen.addEventListener('click', () => {hypenButtonClick();});
+X.addEventListener('click', () => {XButtonClick();});
+forwardSlash.addEventListener('click', () => {forwardSlashButtonClick();});
 
+point.addEventListener('click', () => {pointButtonClick();});
 ni.addEventListener('click', () => {letsExecuteThatBitch();})
 
 
 //operator functions
 function add(a, b) {
     let c = Number(a) + Number(b);
-    console.log(`add: ${a} + ${b} = ${c}`);
+    console.log(`${a} + ${b} = ${c}`);
+    console.log(`Number1 = ${number1}, Number2 = ${number2}`)
     return c;
 }
 function subtract(a, b) {
     let c = a - b;
-    console.log(`subtract: ${a} - ${b} = ${c}`)
-    return;
+    return c;
 }
 function divide(a, b) {
     let c = a / b;
-    console.log(`divide: ${a} ÷ ${b} = ${c}`)
-    return;
+    return c;
 }
 function multiply(a, b) {
     let c = a * b;
-    console.log(`multiply: ${a} x ${b} = ${c}`)
-    return;
+    return c;
 }
 
 function addInput(x) {
     input += x;
     updateTopScreen();
-    return console.log(`input = ${input}`);
+    return console.log(`number1 = ${number1}, number2 = ${number2}, output = ${output}, input = ${input}`);
 }
 
 function clearInput() {
-    input = ""
-    number1 = 0;
-    number2 = 0;
+    input = "";
+    output = "";
+    number1 = "";
+    number2 = "";
+    operator = "";
     updateTopScreen();
+    updateBottomScreen();
     return console.log(`input = cleared!`);
 }
 
@@ -101,42 +106,46 @@ function deleteInput() {
     return console.log(`input = ${input}`);
 }
 
-function updateTopScreen () {
+function updateTopScreen() {
     topScreen.innerHTML = "";
     const inputContent = document.createElement('div');
     inputContent.textContent = input;
     topScreen.appendChild(inputContent);
-    return console.log('screen updated');
+    return;
+}
+
+function updateBottomScreen() {
+    bottomScreen.innerHTML = "";
+    const outputContent = document.createElement('div');
+    outputContent.textContent = output;
+    bottomScreen.appendChild(outputContent);
+    return;
 }
 
 function plusButtonClick() {
-    if (number1 == 0) {
-    number1 = input;
     operator = "addition"
+    number1 = input;
     input += " + "
     updateTopScreen();
-    console.log(`number1 = ${number1}`)
-    return console.log(`input = ${input}`);
-    }
-    else {
-        letsExecuteThatBitch()
-        return console.log("there is something in number1")
-    }
+    return;
 }
 
 function letsExecuteThatBitch() {
     number2 = input.slice(number1.length + 3);
-  
+
     if (operator = "addition") {
+
+        operator = "";
         output = add(number1, number2);
+        number2 = "";
+        number1 = output;
+        input = output;
         console.log(`output = ${output}`)
     }
     else console.log("error")
 
-    console.log(`input = ${input}`)
-    console.log(`number1 = ${number1}`)
-    console.log(`number2 = ${number2}`)
-    console.log(`operator = ${operator}`)
+
+    updateBottomScreen();
     return console.log("Executed.. that bitch")
 
 }

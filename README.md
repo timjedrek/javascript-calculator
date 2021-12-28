@@ -11,9 +11,8 @@ Changes/Progress/Comments/Notes
     - "123" is "number1"
     - " + " is the "operator"
     - "456" is "number2"
-
 If the expression gets to two numbers, then on click of either the equals "ni" button or on click of any of the operators would trigger an eval type function, and print out "579"
 579 would become number1 with number2 going back to nothing and what ever else gets typed afterwards. 
 Also, this is for later on, but let's say I clicked plus sign.  then clicked subtract sign, well then the "operator" needs to change along with the display..
 anyways.. kinda got the addition thing to work.  Also, for some reason CSS hover is not working.
-
+- 12-28-2021 Tim Santos I'm getting frustrated.  I am able to get the calculator to work for the first expression only.  After more buttons are pressed, the logic starts failing. ugh.
