@@ -5,10 +5,6 @@ color-reference {
     color: #4F091D;
 }
 
-html {
-    position: relative;
-    min-height: 100%;
-  }
 
 body {
     background-color: #F5EEDC;
@@ -26,10 +22,8 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 75vh;
-    min-height: 500px;
     padding: 10px;
-    margin-top: 2em;
+    margin-top: 3em;
 }
 
 .calculator {
@@ -39,7 +33,7 @@ button {
     border-style: groove;
     border-radius: 10px;
     margin: 1em;
-    width: 400px;
+    width: 350px;
 }
 
 .screen-holder {
@@ -50,7 +44,7 @@ button {
 
 .screen {
     width: 80vw;
-    height: 18vh;
+    height: 175px;
     background-color: #F5EEDC;
     border-color: #7fa399;
     border-width: 1px;
@@ -86,11 +80,11 @@ button {
 }
 
 .clear:hover {
-    background-color:#3b0716;
+    background-color: #440819;
 }
 
 .clear:active {
-    background-color:#2e0511;
+    background-color:#3b0716;
 }
 
 .delete {
@@ -118,7 +112,6 @@ button {
     background-color: #F5EEDC;
     color: #4F091D;
     width: 90px;
-    height: 90px;
     margin: 0.2em;
     border-radius: 10px;
     font-size: 3rem;
@@ -140,7 +133,6 @@ button {
 }
 
 .footer {
-    position: absolute;
     bottom: 0;
     left: 0;
     display: flex;
