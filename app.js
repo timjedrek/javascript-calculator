@@ -45,44 +45,39 @@ button9.addEventListener('click', () => {addInput(9);});
 button0.addEventListener('click', () => {addInput(0);});
 buttonClear.addEventListener('click', () => {clearInput();});
 buttonDelete.addEventListener('click', () => {deleteInput();});
-plus.addEventListener('click', () => {setOperator("addition");});
-hyphen.addEventListener('click', () => {setOperator("subtraction");});
-X.addEventListener('click', () => {setOperator("multiplication");});
-forwardSlash.addEventListener('click', () => {setOperator("division");});
+plus.addEventListener('click', () => {setOperator("+");});
+hyphen.addEventListener('click', () => {setOperator("-");});
+X.addEventListener('click', () => {setOperator("x");});
+forwardSlash.addEventListener('click', () => {setOperator("÷");});
 point.addEventListener('click', () => {pointButtonClick();});
-ni.addEventListener('click', () => {letsExecuteThatBitch();})
+ni.addEventListener('click', () => {letsExecuteThatBitch();});
+window.addEventListener('keydown', handleKeyboardInput);
 
 
 //operator functions
 function add(a, b) {
-    let c = Number(a) + Number(b);
-    console.log(`${a} + ${b} = ${c}`);
-    console.log(`Number1 = ${number1}, Number2 = ${number2}`)
-    return c;
-}
+    return a + b;
+};
 function subtract(a, b) {
-    let c = a - b;
-    return c;
-}
+    return a - b;
+};
 function divide(a, b) {
-    let c = a / b;
-    return c;
-}
+    return a / b;
+};
 function multiply(a, b) {
-    let c = a * b;
-    return c;
-}
+    return a * b;
+};
 
 function addInput(number){
     if (bottomScreen.textContent === "0" || needToResetScreen)
         resetScreen();
     bottomScreen.textContent += number;
-}
+};
 
 function resetScreen() {
     bottomScreen.textContent = "";
     needToResetScreen = false;
-}
+};
 
 function clearInput() {
     bottomScreen.textContent = "0";
@@ -90,11 +85,11 @@ function clearInput() {
     number1 = "";
     number2 = "";
     operator = null;
-}
+};
 
 function deleteInput() {
     bottomScreen.textContent = bottomScreen.textContent.toString().slice(0, -1);
-}
+};
 
 function pointButtonClick() {
     if (needToResetScreen) resetScreen();
@@ -102,8 +97,64 @@ function pointButtonClick() {
         bottomScreen.textContent = "0";
     if (bottomScreen.textContent.includes(".")) return 
     bottomScreen.textContent += ".";
-}
+};
 
-function setOperator(operatorSelected) {
-    if (operator !== null) letsExecuteThatBitch
-}
+function setOperator(operatorSelection) {
+    if (operator !== null) letsExecuteThatBitch();
+    number1 = bottomScreen.textContent;
+    operator = operatorSelection;
+    topScreen.textContent = `${number1} ${operator}`;
+    needToResetScreen = true;
+};
+
+function letsExecuteThatBitch() {
+    if (operator === null || needToResetScreen) return;
+    if (operator === "÷" && bottomScreen.textContent === "0" ) {
+        alert("You Fool!")
+        return;
+    };
+    number2 = bottomScreen.textContent;
+    bottomScreen.textContent = roundResult(
+        operate(operator, number1, number2)
+    );
+    topScreen.textContent = `${number1} ${operator} ${number2} =`;
+    operator = null;
+};
+
+function roundResult(number) {
+    return Math.round(number * 100000) / 100000;
+};
+
+function operate(operator, a, b) {
+    a = Number(a);
+    b = Number(b);
+    switch (operator) {
+        case "+":
+            return add(a, b);
+        case "-":
+            return subtract(a, b);
+        case "x":
+            return multiply(a,b);
+        case "÷":
+            if (b === 0) return null;
+            else return divide (a,b)
+        default:
+            return null;
+    }
+};
+
+function handleKeyboardInput(e) {
+    if (e.key >= 0 && e.key <= 9) addInput(e.key);
+    if (e.key === ".") pointButtonClick();
+    if (e.key === "=" || e.key === "Enter") letsExecuteThatBitch();
+    if (e.key === "Backspace") deleteInput();
+    if (e.key === "Escape") clearInput();
+    if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') setOperator(convertOperator(e.key))
+  }
+  
+  function convertOperator(keyboardOperator) {
+    if (keyboardOperator === '/') return '÷'
+    if (keyboardOperator === '*') return '×'
+    if (keyboardOperator === '-') return '−'
+    if (keyboardOperator === '+') return '+'
+  }
