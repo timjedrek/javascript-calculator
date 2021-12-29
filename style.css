@@ -5,6 +5,11 @@ color-reference {
     color: #4F091D;
 }
 
+html {
+    position: relative;
+    min-height: 100%;
+  }
+
 body {
     background-color: #F5EEDC;
     font-family:Arial, Helvetica, sans-serif;
@@ -13,13 +18,17 @@ body {
 }
 
 button {
-    border-width: 0px;
+    border-width: 1px;
+    border-color: #7fa399;
 }
 
 .main {
     display: flex;
-    flex-direction: row;
+    align-items: center;
     justify-content: center;
+    height: 75vh;
+    min-height: 500px;
+    padding: 10px;
 }
 
 .header {
@@ -34,6 +43,9 @@ button {
 
 .header-text {
     background-color: #F5EEDC;
+    border-color: #7fa399;
+    border-width: 1px;
+    border-style: groove;
     padding: 0.5rem;
     border-radius: 10px;
 }
@@ -47,11 +59,12 @@ h1 {
 
 .calculator {
     background-color:#97BFB4;
+    border-color: #7fa399;
+    border-width: 1px;
+    border-style: groove;
     border-radius: 10px;
     margin: 1em;
-    width: 30vw;
-    display: flex;
-    flex-direction: column;
+    width: 400px;
 }
 
 .screen-holder {
@@ -61,11 +74,26 @@ h1 {
 }
 
 .screen {
-    width: 26vw;
+    width: 80vw;
     height: 18vh;
     background-color: #F5EEDC;
+    border-color: #7fa399;
+    border-width: 1px;
+    border-style: groove;
     margin: 1em;
     border-radius: 10px;
+}
+
+.top-screen {
+    min-height: 100px;
+    font-size: 20px;
+    text-align: left;
+}
+
+.bottom-screen {
+    min-height: 100px;
+    font-size: 40px;
+    text-align: right;
 }
 
 .clear-and-delete {
@@ -85,8 +113,8 @@ h1 {
 }
 
 .clear, .delete {
-    width: 12.5vw;
-    height: 5vw;
+    width: 30vw;
+    height: 90px;
     margin: 0.2em;
     border-radius: 10px;
     font-size: 2rem;
@@ -95,8 +123,8 @@ h1 {
 .row-1 button, .row-2 button, .row-3 button, .row-4 button {
     background-color: #F5EEDC;
     color: #4F091D;
-    width: 5vw;
-    height: 5vw;
+    width: 90px;
+    height: 90px;
     margin: 0.2em;
     border-radius: 10px;
     font-size: 3rem;
@@ -117,3 +145,15 @@ h1 {
     gap: 0.5rem;
 }
 
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+  }
